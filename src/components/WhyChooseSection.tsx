@@ -23,11 +23,11 @@ export default function WhyChooseSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-primary text-xs tracking-[0.4em] uppercase mb-4">Why Us</p>
+          <p className="text-primary text-[10px] tracking-[0.4em] uppercase mb-4">Why Us</p>
           <h2 className="font-heading text-3xl md:text-5xl">
-            Why Choose <span className="text-gradient">Luxevibes in Ernakulam</span>
+            Why Choose <span className="text-gradient">Luxevibes</span>
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-sm leading-relaxed">
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-xs leading-relaxed">
             As the leading wedding planners in Kothamangalam and event planners in Ernakulam,
             we bring unmatched expertise, creativity, and dedication to every celebration in Kerala.
           </p>
@@ -40,11 +40,11 @@ export default function WhyChooseSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: i * 0.15 }}
-              className="text-center p-8 border border-border bg-card hover:border-primary/50 transition-all duration-500"
+              className="text-center p-6 border border-border bg-card hover:border-primary/50 transition-all duration-500"
             >
-              <r.icon className="w-8 h-8 text-primary mx-auto mb-6" aria-hidden="true" />
-              <h3 className="font-heading text-lg mb-3">{r.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{r.desc}</p>
+              <r.icon className="w-7 h-7 text-primary mx-auto mb-5" aria-hidden="true" />
+              <h3 className="font-heading text-base mb-2">{r.title}</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">{r.desc}</p>
             </motion.article>
           ))}
         </div>

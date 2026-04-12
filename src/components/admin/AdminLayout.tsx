@@ -12,6 +12,7 @@ import {
   Menu,
   MessageSquare,
   Sparkles,
+  Users,
   X
 } from "lucide-react";
 import { useState } from "react";
@@ -23,6 +24,7 @@ const navItems = [
   { icon: Sparkles, label: "Services", path: "/admin/services" },
   { icon: Briefcase, label: "Portfolio", path: "/admin/portfolio" },
   { icon: MessageSquare, label: "Testimonials", path: "/admin/testimonials" },
+  { icon: Users, label: "Team", path: "/admin/team" },
 ];
 
 export default function AdminLayout() {

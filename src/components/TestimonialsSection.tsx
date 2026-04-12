@@ -36,8 +36,8 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-primary text-xs tracking-[0.4em] uppercase mb-4">Testimonials</p>
-          <h2 className="font-heading text-3xl md:text-5xl">What Our <span className="text-gradient">Clients Say</span></h2>
+          <p className="text-primary text-[10px] tracking-[0.4em] uppercase mb-4">Testimonials</p>
+          <h2 className="font-heading text-2xl md:text-4xl">What Our <span className="text-gradient">Clients Say</span></h2>
         </motion.div>
 
         <div className="max-w-3xl mx-auto text-center">
@@ -47,10 +47,10 @@ export default function TestimonialsSection() {
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
               ))}
             </div>
-            <blockquote className="font-heading text-xl md:text-2xl italic leading-relaxed mb-8 text-foreground/90">
+            <blockquote className="font-heading text-lg md:text-xl italic leading-relaxed mb-8 text-foreground/90">
               "{t.message}"
             </blockquote>
-            <p className="text-primary text-sm tracking-widest uppercase">{t.name}</p>
+            <p className="text-primary text-[10px] tracking-widest uppercase">{t.name}</p>
           </motion.div>
 
           <div className="flex justify-center gap-4 mt-10">

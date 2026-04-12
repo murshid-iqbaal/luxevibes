@@ -173,10 +173,10 @@ export async function deleteTestimonial(id: string) {
 export async function uploadMedia(file: File): Promise<string> {
   const fileExt = file.name.split('.').pop();
   const fileName = `${ID.unique()}.${fileExt}`;
-  
+
   const { error } = await supabase.storage.from(supabaseConfig.mediaBucketId).upload(fileName, file);
   if (error) throw error;
-  
+
   const { data } = supabase.storage.from(supabaseConfig.mediaBucketId).getPublicUrl(fileName);
   return data.publicUrl;
 }
@@ -185,10 +185,10 @@ export async function uploadServiceImage(file: File): Promise<string> {
   const fileExt = file.name.split('.').pop();
   const fileName = `${ID.unique()}.${fileExt}`;
   const contentType = file.type || (fileExt === 'png' ? 'image/png' : 'image/jpeg');
-  
+
   const { error } = await supabase.storage.from(supabaseConfig.servicesBucketId).upload(fileName, file, { contentType });
   if (error) throw error;
-  
+
   const { data } = supabase.storage.from(supabaseConfig.servicesBucketId).getPublicUrl(fileName);
   return data.publicUrl;
 }
@@ -197,10 +197,10 @@ export async function uploadPortfolioImage(file: File): Promise<string> {
   const fileExt = file.name.split('.').pop();
   const fileName = `${ID.unique()}.${fileExt}`;
   const contentType = file.type || (fileExt === 'png' ? 'image/png' : 'image/jpeg');
-  
+
   const { error } = await supabase.storage.from(supabaseConfig.portfolioBucketId).upload(fileName, file, { contentType });
   if (error) throw error;
-  
+
   const { data } = supabase.storage.from(supabaseConfig.portfolioBucketId).getPublicUrl(fileName);
   return data.publicUrl;
 }

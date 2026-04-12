@@ -56,7 +56,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: "100%" }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl max-w-5xl leading-tight whitespace-pre-wrap tracking-wide"
+            className="font-heading text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-tight whitespace-pre-wrap tracking-wide"
           >
             {title}
           </motion.h1>
@@ -66,7 +66,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1.5, ease: "easeInOut" }}
-          className="mt-8 text-muted-foreground/80 font-light max-w-xl text-sm md:text-lg tracking-wide leading-relaxed"
+          className="mt-8 text-muted-foreground/80 font-light max-w-xl text-xs md:text-base tracking-wide leading-relaxed"
         >
           {subtitle}
         </motion.p>
@@ -77,18 +77,18 @@ export default function HeroSection() {
           transition={{ delay: 2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 flex flex-wrap gap-6 justify-center"
         >
-          <a
-            href="#contact"
-            className="px-10 py-4 bg-primary text-primary-foreground text-xs tracking-[0.2em] uppercase hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-500"
-          >
-            Book a Consultation
-          </a>
-          <a
-            href="#portfolio"
-            className="px-10 py-4 border border-foreground/20 text-foreground text-xs tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-500"
-          >
-            View Portfolio
-          </a>
+        <a
+          href="#contact"
+          className="px-8 py-3.5 bg-primary text-primary-foreground text-[10px] tracking-[0.2em] uppercase hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-500"
+        >
+          Book a Consultation
+        </a>
+        <a
+          href="#portfolio"
+          className="px-8 py-3.5 border border-foreground/20 text-foreground text-[10px] tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-500"
+        >
+          View Portfolio
+        </a>
         </motion.div>
       </div>
 
