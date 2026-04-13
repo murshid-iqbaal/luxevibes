@@ -1,6 +1,9 @@
+import { addEnquiry } from '@/lib/supabase';
+import emailjs from '@emailjs/browser';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { FormEvent, useRef, useState } from 'react';
+import { toast } from 'sonner';
 
 const WHATSAPP_NUMBER = '916282832891';
 const INSTAGRAM_URL = 'https://www.instagram.com/luxe_vibe_weddings?igsh=M25neHI1eHZ1eXgy&utm_source=qr';
@@ -24,7 +27,7 @@ export default function ContactSection() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
 
@@ -35,19 +38,43 @@ export default function ContactSection() {
     const eventType = data.get('eventType') as string;
     const message = data.get('message') as string;
 
-    const subject = encodeURIComponent(`New Enquiry from ${name} - ${eventType}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nEvent Type: ${eventType}\n\nMessage:\n${message}`
-    );
+    const emailParams = {
+      from_name: name,
+      from_email: email,
+      event_type: eventType,
+      message: message,
+      to_email: EMAIL,
+    };
 
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    const loadingToast = toast.loading("Sending your enquiry...");
 
-    setTimeout(() => {
-      setSending(false);
+    try {
+      // 1. Send Email via EmailJS
+      // These should be set in your .env file
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'yourserviceid';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'yourtemplateid';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'yourpublickey';
+
+      await emailjs.send(serviceId, templateId, emailParams, publicKey);
+
+      // 2. Store in Supabase
+      await addEnquiry({
+        name,
+        email,
+        event_type: eventType,
+        message
+      });
+
       setSent(true);
+      toast.success("Enquiry sent successfully! We will contact you soon.", { id: loadingToast });
       form.reset();
-      setTimeout(() => setSent(false), 3000);
-    }, 1000);
+      setTimeout(() => setSent(false), 5000);
+    } catch (error: any) {
+      console.error("Failed to send enquiry:", error);
+      toast.error("Failed to send enquiry. Please try WhatsApp or email us directly.", { id: loadingToast });
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleWhatsApp = () => {
@@ -86,13 +113,13 @@ export default function ContactSection() {
             <address className="space-y-5 not-italic mb-8">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <a href={`mailto:${EMAIL}`} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <span className="text-sm text-muted-foreground tracking-widest">
                   {EMAIL}
-                </a>
+                </span>
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <a href={PHONE_HREF} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href={PHONE_HREF} className="text-sm text-muted-foreground hover:text-primary transition-colors tracking-widest">
                   {PHONE_DISPLAY}
                 </a>
               </div>
@@ -177,7 +204,7 @@ export default function ContactSection() {
               name="message"
               required
               rows={4}
-              placeholder="Tell us about your dream event..."
+              placeholder="Tell us about your dream event... Provide Contact Details also"
               className="w-full bg-card border border-border px-5 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
             />
             <div className="flex flex-col gap-3">
@@ -186,7 +213,7 @@ export default function ContactSection() {
                 disabled={sending}
                 className="w-full py-3.5 bg-primary text-primary-foreground text-xs tracking-widest uppercase hover:brightness-110 transition-all duration-300 disabled:opacity-50"
               >
-                {sent ? '✓ Opening Email Client' : sending ? 'Sending...' : 'Send Enquiry via Email'}
+                {sent ? '✓ Message Sent' : sending ? 'Sending...' : 'Send Enquiry'}
               </button>
               <button
                 type="button"

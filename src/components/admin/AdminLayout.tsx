@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   Loader2,
   LogOut,
+  Mail,
   Menu,
   MessageSquare,
   Sparkles,
@@ -25,6 +26,7 @@ const navItems = [
   { icon: Briefcase, label: "Portfolio", path: "/admin/portfolio" },
   { icon: MessageSquare, label: "Testimonials", path: "/admin/testimonials" },
   { icon: Users, label: "Team", path: "/admin/team" },
+  { icon: Mail, label: "Enquiries", path: "/admin/enquiries" },
 ];
 
 export default function AdminLayout() {

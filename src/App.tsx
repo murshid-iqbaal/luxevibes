@@ -12,6 +12,7 @@ import TestimonialsManager from "./components/admin/sections/TestimonialsManager
 import SiteImagesManager from "./components/admin/sections/SiteImagesManager";
 import GalleryManager from "./components/admin/sections/GalleryManager";
 import TeamManager from "./components/admin/sections/TeamManager";
+import EnquiriesManager from "./components/admin/sections/EnquiriesManager";
 import { AuthProvider } from "./hooks/useAuth.tsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.tsx";
 import AdminLogin from "./pages/admin/AdminLogin.tsx";
@@ -55,6 +56,9 @@ const App = () => (
               } />
               <Route path="/admin/team" element={
                 <div className="max-w-6xl mx-auto"><TeamManager /></div>
+              } />
+              <Route path="/admin/enquiries" element={
+                <div className="max-w-6xl mx-auto"><EnquiriesManager /></div>
               } />
             </Route>
             <Route path="*" element={<NotFound />} />

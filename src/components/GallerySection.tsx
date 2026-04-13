@@ -80,7 +80,7 @@ export default function GallerySection() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.7, delay: (index % 8) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative group cursor-pointer overflow-hidden rounded-xl border border-white/5 aspect-square"
+                className="relative group cursor-pointer overflow-hidden rounded-xl border border-white/5 aspect-[9/16]"
                 onClick={() => setSelectedImage(item)}
               >
                 <div className="absolute inset-0">

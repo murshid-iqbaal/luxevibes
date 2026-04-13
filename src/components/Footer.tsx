@@ -50,9 +50,9 @@ export default function Footer() {
             <a href={PHONE_HREF} className="text-lg font-heading hover:text-primary transition-colors">
               {PHONE_DISPLAY}
             </a>
-            <a href={`mailto:${EMAIL}`} className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-widest">
+            <span className="text-sm text-muted-foreground tracking-widest">
               {EMAIL}
-            </a>
+            </span>
 
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-2">

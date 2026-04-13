@@ -89,7 +89,7 @@ export default function PortfolioSection() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setLightbox(item)}
-                className="group cursor-pointer overflow-hidden relative rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-700 aspect-[4/5]"
+                className="group cursor-pointer overflow-hidden relative rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-700 aspect-[9/16]"
               >
                 <div className="absolute inset-0">
                   <img

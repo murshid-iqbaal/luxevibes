@@ -55,6 +55,15 @@ export interface TeamMember {
   created_at: string;
 }
 
+export interface Enquiry {
+  id: string;
+  name: string;
+  email: string;
+  event_type?: string;
+  message: string;
+  created_at: string;
+}
+
 // --- Content Document Helpers (Replaces databases.getDocument) ---
 export async function getContentDocument(id: string) {
   const { data, error } = await supabase.from('website_content').select('*').eq('id', id).single();
@@ -238,6 +247,25 @@ export async function updateService(id: string, item: Partial<Omit<ServiceItem, 
 
 export async function deleteService(id: string) {
   const { error } = await supabase.from('services').delete().eq('id', id);
+  if (error) throw error;
+  return true;
+}
+
+// --- Enquiry Helpers ---
+export async function addEnquiry(enquiry: Omit<Enquiry, 'id' | 'created_at'>) {
+  const { data, error } = await supabase.from('enquiries').insert([enquiry]).select().single();
+  if (error) throw error;
+  return data;
+}
+
+export async function getEnquiries(): Promise<Enquiry[]> {
+  const { data, error } = await supabase.from('enquiries').select('*').order('created_at', { ascending: false }).limit(100);
+  if (error) { console.error('Failed to fetch enquiries:', error); return []; }
+  return data as Enquiry[];
+}
+
+export async function deleteEnquiry(id: string) {
+  const { error } = await supabase.from('enquiries').delete().eq('id', id);
   if (error) throw error;
   return true;
 }

@@ -3,7 +3,8 @@ import { checkSystemStatus } from "@/lib/supabase";
 import { useAuth } from "@/hooks/useAuth";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  getPortfolioItems 
+  getPortfolioItems,
+  getEnquiries
 } from "@/lib/supabase";
 import { 
   Camera,
@@ -11,7 +12,8 @@ import {
   ImageIcon,
   LayoutGrid,
   Loader2,
-  Quote
+  Quote,
+  Mail
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import DatabaseSeeder from "@/components/admin/DatabaseSeeder";
@@ -24,6 +26,7 @@ export default function AdminDashboard() {
     portfolioCount: 0,
     weddingMoments: 4,
     teamMembers: 6,
+    enquiryCount: 0,
   });
 
   useEffect(() => {
@@ -32,11 +35,13 @@ export default function AdminDashboard() {
       try {
         const status = await checkSystemStatus();
         if (status.database) {
+          const enquiries = await getEnquiries();
           const projects = await getPortfolioItems();
           setStats(prev => ({
             ...prev,
             portfolioCount: projects.length,
-            galleryCount: projects.length // Temporary mapping
+            galleryCount: projects.length, // Temporary mapping
+            enquiryCount: enquiries.length
           }));
         }
       } catch (error: any) {
@@ -89,10 +94,10 @@ export default function AdminDashboard() {
           sub="Images in the marquee" 
         />
         <StatCard 
-          icon={Users} 
-          label="Team Members" 
-          value={stats.teamMembers} 
-          sub="Creative professionals" 
+          icon={Mail} 
+          label="New Enquiries" 
+          value={stats.enquiryCount} 
+          sub="Total messages received" 
         />
       </div>
 
@@ -133,10 +138,10 @@ export default function AdminDashboard() {
             path="/admin/team"
           />
           <QuickActionItem 
-            icon={LayoutGrid} 
-            label="Services Manager" 
-            desc="Modify the services available on homepage"
-            path="/admin/services"
+            icon={Mail} 
+            label="Enquiries Manager" 
+            desc="View and manage recent contact enquiries"
+            path="/admin/enquiries"
           />
         </div>
       </section>

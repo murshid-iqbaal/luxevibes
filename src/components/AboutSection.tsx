@@ -2,7 +2,6 @@ import aboutLuxuryImg from '@/assets/about-luxury.jpg';
 import { getContentDocument } from '@/lib/supabase';
 import { useQuery } from '@tanstack/react-query';
 import { motion, useInView } from 'framer-motion';
-import { Award, MapPin, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
 
 export default function AboutSection() {
@@ -80,8 +79,8 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-8 pt-8 border-t border-white/5">
-              <div className="group">
+            {/* <div className="grid sm:grid-cols-3 gap-8 pt-8 border-t border-white/5"> */}
+            {/* <div className="group">
                 <Sparkles className="w-5 h-5 text-primary mb-4 opacity-50 group-hover:opacity-100 transition-opacity" />
                 <h4 className="font-heading text-sm uppercase tracking-[0.2em] mb-2">Bespoke</h4>
                 <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Tailored Visions</p>
@@ -95,8 +94,8 @@ export default function AboutSection() {
                 <MapPin className="w-5 h-5 text-primary mb-4 opacity-50 group-hover:opacity-100 transition-opacity" />
                 <h4 className="font-heading text-sm uppercase tracking-[0.2em] mb-2">Global</h4>
                 <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Kerala & Beyond</p>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </motion.div>
 
         </div>
