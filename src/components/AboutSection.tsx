@@ -21,7 +21,7 @@ export default function AboutSection() {
   });
 
   const title = aboutData?.title || "Crafting the Future of\nLuxury Celebrations";
-  const description = aboutData?.description || "Luxe Vibe stands as the premier destination for cinematic wedding planning and elite event management across Kerala. Based in Kothamangalam and Ernakulam, we blend traditional elegance with contemporary vision to create atmospheric experiences that transcend the ordinary.";
+  const description = aboutData?.description || "Luxe Vibe stands as the premier destination for cinematic wedding planning and elite event management across Kerala. Based in Ernakulam, we blend traditional elegance with contemporary vision to create atmospheric experiences that transcend the ordinary.";
   const image = aboutData?.imageUrl || aboutLuxuryImg;
 
   return (

@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
   addPortfolioItem, deletePortfolioItem, getPortfolioItems,
-  updatePortfolioItem, PortfolioItem, uploadPortfolioImage
+  PortfolioItem,
+  updatePortfolioItem,
+  uploadPortfolioImage
 } from "@/lib/supabase";
 import { AnimatePresence, motion } from "framer-motion";
-import { Camera, Layers, Loader2, Pencil, Plus, Save, Trash2, X, Sparkles } from "lucide-react";
+import { Camera, Layers, Loader2, Pencil, Plus, Save, Sparkles, Trash2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -15,10 +17,10 @@ const CATEGORIES = ["Weddings", "Corporate", "Private", "Destination"];
 
 // The 4 fallback items visible on the live site
 const DEFAULT_ITEMS = [
-  { title: "Royal Garden Wedding",  category: "Weddings",    description: "A breathtaking garden ceremony in Kothamangalam with ocean views.",  image_url: "" },
-  { title: "Emerald Gala Night",    category: "Corporate",   description: "Sophisticated corporate gala in Ernakulam with teal uplighting.",      image_url: "" },
-  { title: "Intimate Anniversary",  category: "Private",     description: "A warm, candlelit anniversary celebration in Kerala.",                  image_url: "" },
-  { title: "Classic White Wedding", category: "Weddings",    description: "Timeless elegance with white florals in Kothamangalam.",               image_url: "" },
+  { title: "Royal Garden Wedding", category: "Weddings", description: "A breathtaking garden ceremony in   with ocean views.", image_url: "" },
+  { title: "Emerald Gala Night", category: "Corporate", description: "Sophisticated corporate gala in Ernakulam with teal uplighting.", image_url: "" },
+  { title: "Intimate Anniversary", category: "Private", description: "A warm, candlelit anniversary celebration in Kerala.", image_url: "" },
+  { title: "Classic White Wedding", category: "Weddings", description: "Timeless elegance with white florals in  .", image_url: "" },
 ];
 
 type EditForm = {
@@ -226,9 +228,9 @@ export default function PortfolioManager() {
                     </div>
                     <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
                     <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
-                        <p className="text-[9px] text-muted-foreground leading-relaxed uppercase tracking-widest text-center">
-                            Visuals are archived in the <code className="text-primary font-bold">portfolio-images</code> bucket.
-                        </p>
+                      <p className="text-[9px] text-muted-foreground leading-relaxed uppercase tracking-widest text-center">
+                        Visuals are archived in the <code className="text-primary font-bold">portfolio-images</code> bucket.
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -1,11 +1,11 @@
 import { motion, useInView } from 'framer-motion';
+import { Award, Calendar, MapPin, Users } from 'lucide-react';
 import { useRef } from 'react';
-import { Award, Users, MapPin, Calendar } from 'lucide-react';
 
 const reasons = [
   { icon: Award, title: 'Incredible Detail', desc: 'Every element of your event is curated with a fresh cinematic eye for unrivaled luxury.' },
   { icon: Users, title: 'Bespoke Service', desc: 'We work closely with each family to ensure a deeply personal and exclusive planning experience.' },
-  { icon: MapPin, title: 'Local Expertise', desc: 'Deep knowledge of the best venues, vendors, and hidden gems in Kothamangalam and Ernakulam.' },
+  { icon: MapPin, title: 'Local Expertise', desc: 'Deep knowledge of the best venues, vendors, and hidden gems in Ernakulam.' },
   { icon: Calendar, title: 'Flawless Execution', desc: 'Passionate commitment to bringing visionary concepts to life with absolute precision.' },
 ];
 
@@ -28,7 +28,7 @@ export default function WhyChooseSection() {
             Why Choose <span className="text-gradient">Luxevibes</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-xs leading-relaxed">
-            As the leading wedding planners in Kothamangalam and event planners in Ernakulam,
+            As the leading wedding planners in   and event planners in Ernakulam,
             we bring unmatched expertise, creativity, and dedication to every celebration in Kerala.
           </p>
         </motion.div>

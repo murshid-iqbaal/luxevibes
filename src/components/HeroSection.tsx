@@ -1,8 +1,7 @@
 import heroImg from '@/assets/hero-wedding.jpg';
-import { motion } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
 import { getContentDocument } from '@/lib/supabase';
-import { Loader2 } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   const { data: heroData, isLoading } = useQuery({
@@ -22,6 +21,15 @@ export default function HeroSection() {
   const topText = "Premium Wedding & Event Planners";
   const bgImage = heroData?.imageUrl || heroImg;
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden grain-overlay">
       <motion.div
@@ -32,7 +40,7 @@ export default function HeroSection() {
       >
         <img
           src={bgImage}
-          alt="Luxury wedding venue setup in Kothamangalam by Luxe Vibe"
+          alt="Luxury wedding venue setup in Ernakulam by Luxe Vibe"
           className="w-full h-full object-cover"
           width={1920}
           height={1080}
@@ -77,18 +85,20 @@ export default function HeroSection() {
           transition={{ delay: 2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 flex flex-wrap gap-6 justify-center"
         >
-        <a
-          href="#contact"
-          className="px-8 py-3.5 bg-primary text-primary-foreground text-[10px] tracking-[0.2em] uppercase hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-500"
-        >
-          Book a Consultation
-        </a>
-        <a
-          href="#portfolio"
-          className="px-8 py-3.5 border border-foreground/20 text-foreground text-[10px] tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-500"
-        >
-          View Portfolio
-        </a>
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, '#contact')}
+            className="px-8 py-3.5 bg-primary text-primary-foreground text-[10px] tracking-[0.2em] uppercase hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-500"
+          >
+            Book a Consultation
+          </a>
+          <a
+            href="#portfolio"
+            onClick={(e) => scrollToSection(e, '#portfolio')}
+            className="px-8 py-3.5 border border-foreground/20 text-foreground text-[10px] tracking-[0.2em] uppercase hover:border-primary hover:text-primary transition-all duration-500"
+          >
+            View Portfolio
+          </a>
         </motion.div>
       </div>
 

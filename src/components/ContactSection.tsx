@@ -104,10 +104,10 @@ export default function ContactSection() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="font-heading text-2xl mb-6">Plan Your Dream Wedding in Kothamangalam</h3>
+            <h3 className="font-heading text-2xl mb-6">Plan Your Dream Wedding in Ernakulam</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-10">
               Share your vision with us and we'll create something extraordinary together.
-              We serve Kothamangalam, Ernakulam, and all of Kerala.
+              We serve Ernakulam, and all of Kerala.
             </p>
 
             <address className="space-y-5 not-italic mb-8">
@@ -125,7 +125,7 @@ export default function ContactSection() {
               </div>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <span className="text-sm text-muted-foreground">Kothamangalam, Ernakulam, Kerala, India</span>
+                <span className="text-sm text-muted-foreground"> Ernakulam, Kerala, India</span>
               </div>
               <div className="flex items-center gap-4">
                 <Instagram className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
@@ -157,8 +157,8 @@ export default function ContactSection() {
 
             <div className="mt-8 overflow-hidden border border-border">
               <iframe
-                title="Luxevibes location in Kothamangalam, Ernakulam"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62788.37!2d76.59!3d10.06!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e3a1f2b8c8f7%3A0x2e5b8a3d2c2f9a1b!2sKothamangalam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                title="Luxevibes location in Ernakulam"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125745.78219958892!2d76.30829335!3d9.970874599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d08f976f3a9%3A0xe9cdb444f06ed454!2sErnakulam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1776143074658!5m2!1sen!2sin"
                 width="100%"
                 height="200"
                 style={{ border: 0 }}

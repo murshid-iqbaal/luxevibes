@@ -1,18 +1,18 @@
-import { motion } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
 import { getServices } from '@/lib/supabase';
-import { Heart, Globe, Briefcase, Sparkles, ChevronLeft, ChevronRight, Scale } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { useQuery } from '@tanstack/react-query';
 import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
+import { motion } from 'framer-motion';
+import { Briefcase, ChevronLeft, ChevronRight, Globe, Heart, Sparkles } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 
 const ICON_MAP: Record<string, any> = { Heart, Globe, Briefcase, Sparkles };
 
 const FALLBACK_SERVICES = [
-  { id: 'f1', title: 'Luxury Weddings',      description: 'Exquisite wedding celebrations in Kothamangalam and Ernakulam, crafted with unparalleled attention to detail and elegance.', icon: 'Heart',     image_url: '', sort_order: 1, created_at: '' },
-  { id: 'f2', title: 'Destination Weddings', description: "Breathtaking destination wedding ceremonies across Kerala and India's most stunning exclusive locations.",                  icon: 'Globe',     image_url: '', sort_order: 2, created_at: '' },
-  { id: 'f3', title: 'Corporate Events',     description: 'Sophisticated corporate events and business gatherings in Ernakulam that leave lasting professional impressions.',          icon: 'Briefcase', image_url: '', sort_order: 3, created_at: '' },
-  { id: 'f4', title: 'Private Celebrations', description: 'Intimate private celebrations and anniversary events designed to create unforgettable personal memories in Kerala.',       icon: 'Sparkles',  image_url: '', sort_order: 4, created_at: '' },
+  { id: 'f1', title: 'Luxury Weddings', description: 'Exquisite wedding celebrations in Ernakulam, crafted with unparalleled attention to detail and elegance.', icon: 'Heart', image_url: '', sort_order: 1, created_at: '' },
+  { id: 'f2', title: 'Destination Weddings', description: "Breathtaking destination wedding ceremonies across Kerala and India's most stunning exclusive locations.", icon: 'Globe', image_url: '', sort_order: 2, created_at: '' },
+  { id: 'f3', title: 'Corporate Events', description: 'Sophisticated corporate events and business gatherings in Ernakulam that leave lasting professional impressions.', icon: 'Briefcase', image_url: '', sort_order: 3, created_at: '' },
+  { id: 'f4', title: 'Private Celebrations', description: 'Intimate private celebrations and anniversary events designed to create unforgettable personal memories in Kerala.', icon: 'Sparkles', image_url: '', sort_order: 4, created_at: '' },
 ];
 
 export default function ServicesSection() {
@@ -54,13 +54,13 @@ export default function ServicesSection() {
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollTo  = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+  const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
 
   return (
     <section id="services" className="py-40 grain-overlay overflow-hidden relative">
       {/* Background Ambiance Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-primary/5 rounded-full blur-[160px] pointer-events-none -z-10" />
-      
+
       <div className="container mx-auto px-6">
         {/* Heading */}
         <motion.div
@@ -158,13 +158,13 @@ export default function ServicesSection() {
                           transition={{ duration: 0.8 }}
                         >
                           <div className="relative mb-8 inline-block">
-                             <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                             <IconComp
+                            <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <IconComp
                               className="relative z-10 stroke-[1px] w-12 h-12 text-primary transition-all duration-700 group-hover:scale-110"
                               aria-hidden="true"
                             />
                           </div>
-                         
+
                           <h3 className="font-heading text-3xl mb-4 tracking-tight text-white italic group-hover:text-primary transition-colors duration-500">{s.title}</h3>
                           <div className="w-12 h-px bg-primary/30 mb-5 group-hover:w-24 transition-all duration-700" />
                           <p className="text-muted-foreground/80 font-light text-sm leading-relaxed tracking-wide mb-2 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
@@ -187,7 +187,7 @@ export default function ServicesSection() {
             <div className="flex items-center gap-4 text-[10px] tracking-[0.5em] text-white/20 uppercase font-bold">
               <span>{Math.min(selectedIndex + 1, activeServices.length).toString().padStart(2, '0')}</span>
               <div className="w-48 h-[1px] bg-white/5 relative overflow-hidden">
-                <motion.div 
+                <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: (selectedIndex + 1) / activeServices.length }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -196,7 +196,7 @@ export default function ServicesSection() {
               </div>
               <span className="text-white/40">{activeServices.length.toString().padStart(2, '0')}</span>
             </div>
-            
+
             <div className="flex gap-3">
               {scrollSnaps.map((_, i) => (
                 <button

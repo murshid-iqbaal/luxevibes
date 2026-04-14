@@ -1,7 +1,7 @@
+import { getContentDocument } from '@/lib/supabase';
+import { useQuery } from '@tanstack/react-query';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getContentDocument } from '@/lib/supabase';
 
 export default function CTASection() {
   const ref = useRef(null);
@@ -23,7 +23,16 @@ export default function CTASection() {
   });
 
   const title = ctaData?.cta_title || "Plan Your Dream Wedding in Kerala";
-  const subtitle = ctaData?.cta_subtitle || "Every extraordinary celebration begins with a conversation. Whether in Kothamangalam, Ernakulam, or anywhere in Kerala — let us bring your vision to life.";
+  const subtitle = ctaData?.cta_subtitle || "Every extraordinary celebration begins with a conversation. Whether in Ernakulam, or anywhere in Kerala — let us bring your vision to life.";
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="py-32 relative grain-overlay">
@@ -45,6 +54,7 @@ export default function CTASection() {
           </p>
           <a
             href="#contact"
+            onClick={(e) => scrollToSection(e, '#contact')}
             className="inline-flex px-10 py-4 bg-primary text-primary-foreground text-xs tracking-widest uppercase hover:brightness-110 transition-all duration-300"
           >
             Start Your Journey

@@ -1,18 +1,31 @@
-import { useState, useEffect } from "react";
-import {
-  getServices, addService, updateService, deleteService,
-  uploadServiceImage, ServiceItem
-} from "@/lib/supabase";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import {
-  Loader2, Plus, Trash2, Pencil, X, Save,
-  Heart, Globe, Briefcase, Sparkles, Camera, GripVertical
+  addService,
+  deleteService,
+  getServices,
+  ServiceItem,
+  updateService,
+  uploadServiceImage
+} from "@/lib/supabase";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Briefcase,
+  Camera,
+  Globe,
+  Heart,
+  Loader2,
+  Pencil,
+  Plus,
+  Save,
+  Sparkles,
+  Trash2,
+  X
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const ICON_OPTIONS = [
   { key: 'Heart', label: 'Heart', icon: Heart },
@@ -24,7 +37,7 @@ const ICON_OPTIONS = [
 const ICON_MAP: Record<string, any> = { Heart, Globe, Briefcase, Sparkles };
 
 const DEFAULT_SERVICES = [
-  { title: "Luxury Weddings", description: "Exquisite wedding celebrations in Kothamangalam and Ernakulam, crafted with unparalleled attention to detail and elegance.", icon: "Heart", sort_order: 1, image_url: "" },
+  { title: "Luxury Weddings", description: "Exquisite wedding celebrations in Ernakulam, crafted with unparalleled attention to detail and elegance.", icon: "Heart", sort_order: 1, image_url: "" },
   { title: "Destination Weddings", description: "Breathtaking destination wedding ceremonies across Kerala and India's most stunning exclusive locations.", icon: "Globe", sort_order: 2, image_url: "" },
   { title: "Corporate Events", description: "Sophisticated corporate events and business gatherings in Ernakulam that leave lasting professional impressions.", icon: "Briefcase", sort_order: 3, image_url: "" },
   { title: "Private Celebrations", description: "Intimate private celebrations and anniversary events designed to create unforgettable personal memories in Kerala.", icon: "Sparkles", sort_order: 4, image_url: "" },

@@ -1,7 +1,7 @@
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
-import { X } from 'lucide-react';
 import { getPortfolioItems, type PortfolioItem } from '@/lib/supabase';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+import { X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 import fallback1 from '@/assets/portfolio-1.jpg';
 import fallback2 from '@/assets/portfolio-2.jpg';
@@ -9,10 +9,10 @@ import fallback3 from '@/assets/portfolio-3.jpg';
 import fallback4 from '@/assets/portfolio-4.jpg';
 
 const fallbackData: PortfolioItem[] = [
-  { id: '1', title: 'Royal Garden Wedding', image_url: fallback1, category: 'Weddings', description: 'A breathtaking garden ceremony in Kothamangalam with ocean views.', created_at: '' },
+  { id: '1', title: 'Royal Garden Wedding', image_url: fallback1, category: 'Weddings', description: 'A breathtaking garden ceremony in   with ocean views.', created_at: '' },
   { id: '2', title: 'Emerald Gala Night', image_url: fallback2, category: 'Corporate', description: 'Sophisticated corporate gala in Ernakulam with teal uplighting.', created_at: '' },
   { id: '3', title: 'Intimate Anniversary', image_url: fallback3, category: 'Private', description: 'A warm, candlelit anniversary celebration in Kerala.', created_at: '' },
-  { id: '4', title: 'Classic White Wedding', image_url: fallback4, category: 'Weddings', description: 'Timeless elegance with white florals in Kothamangalam.', created_at: '' },
+  { id: '4', title: 'Classic White Wedding', image_url: fallback4, category: 'Weddings', description: 'Timeless elegance with white florals in  .', created_at: '' },
 ];
 
 const categories = ['All', 'Weddings', 'Corporate', 'Private', 'Destination'];
@@ -64,19 +64,18 @@ export default function PortfolioSection() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-5 py-2 text-[9px] tracking-[0.3em] uppercase transition-all duration-700 rounded-full border ${
-                filter === cat
+              className={`px-5 py-2 text-[9px] tracking-[0.3em] uppercase transition-all duration-700 rounded-full border ${filter === cat
                   ? 'border-primary/50 bg-primary/10 text-primary shadow-[0_0_20px_rgba(var(--primary),0.1)]'
                   : 'border-white/5 text-muted-foreground hover:border-white/20 hover:text-white'
-              }`}
+                }`}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        <motion.div 
-          layout 
+        <motion.div
+          layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <AnimatePresence mode="popLayout">
@@ -100,7 +99,7 @@ export default function PortfolioSection() {
                   />
                   {/* Glass Overlay on Hover */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px]" />
-                  
+
                   <div className="absolute inset-0 flex items-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-out">
                     <div className="w-full backdrop-blur-sm bg-black/20 p-4 rounded-lg border border-white/5">
                       <div className="flex items-center gap-2 mb-2">
