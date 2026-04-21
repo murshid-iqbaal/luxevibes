@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { ID, getContentDocument, updateContentDocument, createContentDocument, getTeamMembers, addTeamMember } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
+import { addTeamMember, createContentDocument, getContentDocument, getTeamMembers, updateContentDocument } from "@/lib/supabase";
+import { DatabaseZap, Loader2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
-import { Loader2, DatabaseZap } from "lucide-react";
 
 const INITIAL_CONTENT = [
   {
@@ -10,7 +10,7 @@ const INITIAL_CONTENT = [
     data: {
       title: "Crafting Unforgettable\nLuxury Experiences",
       subtitle: "Bespoke weddings & premium events tailored to perfection",
-      imageUrl: "", 
+      imageUrl: "",
       elementId: "hero"
     }
   },
@@ -18,7 +18,7 @@ const INITIAL_CONTENT = [
     id: "about_section",
     data: {
       title: "Best Wedding Planners in Ernakulam",
-      description: "At Luxe Vibe, we are the emerging leaders in luxury wedding planning in Kothamangalam and Ernakulam. With a fresh perspective and a passion for cinematic perfection across Kerala, we transform your vision into breathtaking celebrations that leave lasting impressions.",
+      description: "At Luxe Vibe, we are the emerging leaders in luxury wedding planning in Ernakulam. With a fresh perspective and a passion for cinematic perfection across Kerala, we transform your vision into breathtaking celebrations that leave lasting impressions.",
       imageUrl: "",
       elementId: "about"
     }
@@ -37,7 +37,7 @@ const INITIAL_CONTENT = [
       footer_text: "Crafting beautiful stories for the most discerning clients across Kerala and beyond.",
       contact_phone: "+91 98765 43210",
       contact_email: "hello@luxevibe.com",
-      office_address: "Luxe Vibe Studio, Kothamangalam, Kerala"
+      office_address: "Luxe Vibe Studio,  , Kerala"
     }
   }
 ];
@@ -53,7 +53,7 @@ export default function DatabaseSeeder() {
   const seedDatabase = async () => {
     setIsSeeding(true);
     const loadingToast = toast.loading("Initializing site data...");
-    
+
     try {
       // Seed Website Content
       for (const item of INITIAL_CONTENT) {
@@ -85,8 +85,8 @@ export default function DatabaseSeeder() {
   };
 
   return (
-    <Button 
-      onClick={seedDatabase} 
+    <Button
+      onClick={seedDatabase}
       disabled={isSeeding}
       variant="outline"
       className="gap-2 border-[#4A6741]/20 text-[#4A6741] hover:bg-[#4A6741]/5 font-bold uppercase tracking-widest text-[10px] h-12 px-6"

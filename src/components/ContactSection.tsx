@@ -119,7 +119,7 @@ export default function ContactSection() {
               </div>
               <div className="flex items-center gap-4">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <a href={PHONE_HREF} className="text-sm text-muted-foreground hover:text-primary transition-colors tracking-widest">
+                <a href={PHONE_HREF} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {PHONE_DISPLAY}
                 </a>
               </div>

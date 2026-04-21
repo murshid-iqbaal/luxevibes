@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end gap-4">
             <p className="text-primary text-[10px] tracking-[0.4em] uppercase mb-2">Contact</p>
 
-            <a href={PHONE_HREF} className="text-lg font-heading hover:text-primary transition-colors">
+            <a href={PHONE_HREF} className="text-sm hover:text-primary transition-colors">
               {PHONE_DISPLAY}
             </a>
             <span className="text-sm text-muted-foreground tracking-widest">

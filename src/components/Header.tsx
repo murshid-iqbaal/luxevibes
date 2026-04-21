@@ -43,10 +43,10 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center gap-3">
-          <img src={logo} alt="LuxeVibes" className="h-10 w-10 rounded-full object-cover" />
-          <span className="font-heading text-xl tracking-wider text-foreground">
-            LUXE <span className="text-primary">VIBE</span>
+        <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="flex flex-col items-center gap-0.5 group pl-4">
+          <img src={logo} alt="LuxeVibes" className="h-8 w-8 rounded-full object-cover transition-transform duration-300 group-hover:scale-105" />
+          <span className="font-heading text-[9px] tracking-[0.25em] uppercase text-primary">
+            LUXE VIBE
           </span>
         </a>
 

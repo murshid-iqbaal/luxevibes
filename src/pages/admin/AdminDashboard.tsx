@@ -1,22 +1,18 @@
-import { useState, useEffect } from "react";
-import { checkSystemStatus } from "@/lib/supabase";
-import { useAuth } from "@/hooks/useAuth";
+import DatabaseSeeder from "@/components/admin/DatabaseSeeder";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  getPortfolioItems,
-  getEnquiries
-} from "@/lib/supabase";
-import { 
+import { useAuth } from "@/hooks/useAuth";
+import { checkSystemStatus, getEnquiries } from "@/lib/supabase";
+import {
   Camera,
-  Users,
   ImageIcon,
   LayoutGrid,
   Loader2,
+  Mail,
   Quote,
-  Mail
+  Users
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DatabaseSeeder from "@/components/admin/DatabaseSeeder";
 
 export default function AdminDashboard() {
   const { user } = useAuth();
@@ -36,11 +32,10 @@ export default function AdminDashboard() {
         const status = await checkSystemStatus();
         if (status.database) {
           const enquiries = await getEnquiries();
-          const projects = await getPortfolioItems();
           setStats(prev => ({
             ...prev,
-            portfolioCount: projects.length,
-            galleryCount: projects.length, // Temporary mapping
+            portfolioCount: 0,
+            galleryCount: 0, // Temporary mapping
             enquiryCount: enquiries.length
           }));
         }
@@ -75,29 +70,29 @@ export default function AdminDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <StatCard 
-          icon={Camera} 
-          label="Total Gallery Images" 
-          value={stats.galleryCount} 
-          sub="Photos across all categories" 
+        <StatCard
+          icon={Camera}
+          label="Total Gallery Images"
+          value={stats.galleryCount}
+          sub="Photos across all categories"
         />
-        <StatCard 
-          icon={LayoutGrid} 
-          label="Recent Works" 
-          value={stats.portfolioCount} 
-          sub="Projects in the carousel" 
+        <StatCard
+          icon={LayoutGrid}
+          label="Recent Works"
+          value={stats.portfolioCount}
+          sub="Projects in the carousel"
         />
-        <StatCard 
-          icon={LayoutGrid} 
-          label="Wedding Moments" 
-          value={stats.weddingMoments} 
-          sub="Images in the marquee" 
+        <StatCard
+          icon={LayoutGrid}
+          label="Wedding Moments"
+          value={stats.weddingMoments}
+          sub="Images in the marquee"
         />
-        <StatCard 
-          icon={Mail} 
-          label="New Enquiries" 
-          value={stats.enquiryCount} 
-          sub="Total messages received" 
+        <StatCard
+          icon={Mail}
+          label="New Enquiries"
+          value={stats.enquiryCount}
+          sub="Total messages received"
         />
       </div>
 
@@ -107,39 +102,39 @@ export default function AdminDashboard() {
           Quick Actions
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <QuickActionItem 
-            icon={LayoutGrid} 
-            label="Portfolio Manager" 
+          <QuickActionItem
+            icon={LayoutGrid}
+            label="Portfolio Manager"
             desc="Update the recent works portfolio grid"
             path="/admin/portfolio"
           />
-          <QuickActionItem 
-            icon={Quote} 
-            label="Testimonials" 
+          <QuickActionItem
+            icon={Quote}
+            label="Testimonials"
             desc="Add or edit client reviews"
             path="/admin/testimonials"
           />
-          <QuickActionItem 
-            icon={Camera} 
-            label="Manage Gallery" 
+          <QuickActionItem
+            icon={Camera}
+            label="Manage Gallery"
             desc="Add or remove photos from the main gallery"
             path="/admin/gallery"
           />
-          <QuickActionItem 
-            icon={ImageIcon} 
-            label="Site Images" 
+          <QuickActionItem
+            icon={ImageIcon}
+            label="Site Images"
             desc="Update static site images and heroes"
             path="/admin/site-images"
           />
-          <QuickActionItem 
-            icon={Users} 
-            label="Team Manager" 
+          <QuickActionItem
+            icon={Users}
+            label="Team Manager"
             desc="Manage the people behind Luxe Vibe"
             path="/admin/team"
           />
-          <QuickActionItem 
-            icon={Mail} 
-            label="Enquiries Manager" 
+          <QuickActionItem
+            icon={Mail}
+            label="Enquiries Manager"
             desc="View and manage recent contact enquiries"
             path="/admin/enquiries"
           />
